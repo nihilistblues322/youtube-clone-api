@@ -3,6 +3,7 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use App\Models\Video;
 use App\Models\Channel;
 use Laravel\Sanctum\HasApiTokens;
 use Illuminate\Notifications\Notifiable;
@@ -48,4 +49,7 @@ class User extends Authenticatable
     {
         return $this->hasOne(Channel::class);
     }
+   
+
+
 }
