@@ -17,7 +17,7 @@ class CategoryVideoFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+
         ];
     }
 }

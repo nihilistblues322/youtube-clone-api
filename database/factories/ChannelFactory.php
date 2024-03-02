@@ -19,7 +19,7 @@ class ChannelFactory extends Factory
     {
         return [
             'name' => ucfirst(fake()->words(mt_rand(1, 2), true)),
-            'user_id' => User::factory()
+            'user_id' => User::factory(),
         ];
     }
 }

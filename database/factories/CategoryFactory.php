@@ -2,7 +2,6 @@
 
 namespace Database\Factories;
 
-use App\Models\User;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -18,7 +17,7 @@ class CategoryFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => ucfirst(fake()->words(mt_rand(1, 2), true))
+            'name' => ucfirst(fake()->words(mt_rand(1, 2), true)),
         ];
     }
 }
