@@ -1,7 +1,7 @@
 <?php
 
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers\VideoController;
 use App\Http\Controllers\ChannelController;
 use App\Http\Controllers\CategoryController;
@@ -16,3 +16,7 @@ Route::get('/channels/{channel}', [ChannelController::class, 'show']);
 
 Route::get('/videos', [VideoController::class, 'index']);
 Route::get('/videos/{video}', [VideoController::class, 'show']);
+
+Route::get('/users', [UserController::class, 'index']);
+Route::get('/users/{user}', [UserController::class, 'show']);
+
