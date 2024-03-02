@@ -2,10 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\Category;
 use App\Models\Video;
+use App\Models\Category;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Arr;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\DB;
 
 class CategoryVideoSeeder extends Seeder
@@ -15,23 +15,28 @@ class CategoryVideoSeeder extends Seeder
      */
     public function run(): void
     {
-        $categoriesIds = Category::pluck('id')->all();
-        $videosIds = Video::pluck('id')->all();
+        $categoryIds = Category::pluck('id');
+        $videoIds = Video::pluck('id');
 
-        $categoryVideo = [];
+        $categoryVideos = $categoryIds->flatMap(
+            fn (int $id) => $this->categoryVideos($id, $this->randomVideoIds($videoIds))
+        );
 
-        foreach ($categoriesIds as $categoryId) {
-            $randomVideosIds = Arr::random($videosIds, mt_rand(1, count($videosIds)));
+        DB::table('category_video')->insert($categoryVideos->all());
 
-            foreach ($randomVideosIds as $videoId) {
-                $categoryVideo[] = [
-                    'category_id' => $categoryId,
-                    'video_id' => $videoId,
-                ];
-            }
-        }
+    }
 
-        DB::table('category_video')->insert($categoryVideo);
+    private function categoryVideos(int $categoryId, Collection $videoIds): Collection
+    {
+        return $videoIds->map(fn (int $id) => [
+            'category_id' => $categoryId,
+            'video_id' => $id,
+        ]);
 
+    }
+
+    private function randomVideoIds(Collection $ids): Collection
+    {
+        return $ids->random(mt_rand(1, count($ids)));
     }
 }
