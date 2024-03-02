@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
-use DB;
+
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -21,7 +21,7 @@ class DatabaseSeeder extends Seeder
                 ChannelSeeder::class,
                 VideoSeeder::class,
                 CategorySeeder::class,
-                CategoryVideoSeeder::class
+                // CategoryVideoSeeder::class
             ]
         );
 
