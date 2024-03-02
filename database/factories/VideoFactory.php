@@ -17,10 +17,13 @@ class VideoFactory extends Factory
      */
     public function definition(): array
     {
+        $createdAt = $this->faker->dateTimeThisYear();
         return [
             'title' => ucfirst(fake()->words(mt_rand(1, 2), true)),
             'channel_id' => Channel::factory(),
             'description' => fake()->sentence(10),
+            'created_at' => $createdAt,
+            'updated_at' => $createdAt,
 
         ];
     }
