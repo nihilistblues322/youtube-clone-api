@@ -17,7 +17,8 @@ class VideoFactory extends Factory
      */
     public function definition(): array
     {
-        $createdAt = $this->faker->dateTimeThisYear();
+
+        $createdAt = $this->createdAt();
         return [
             'title' => ucfirst(fake()->words(mt_rand(1, 2), true)),
             'channel_id' => Channel::factory(),
@@ -26,5 +27,15 @@ class VideoFactory extends Factory
             'updated_at' => $createdAt,
 
         ];
+
+    }
+
+    public function createdAt()
+    {
+        $period = $this->faker->randomElement(['year', 'month', 'week', 'day', 'hour']);
+
+        return $this->faker->dateTimeBetween("-1 {$period}");
+
+        
     }
 }
