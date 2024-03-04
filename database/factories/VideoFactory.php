@@ -19,6 +19,7 @@ class VideoFactory extends Factory
     {
 
         $createdAt = $this->createdAt();
+
         return [
             'title' => ucfirst(fake()->words(mt_rand(1, 2), true)),
             'channel_id' => Channel::factory(),
@@ -36,6 +37,5 @@ class VideoFactory extends Factory
 
         return $this->faker->dateTimeBetween("-1 {$period}");
 
-        
     }
 }

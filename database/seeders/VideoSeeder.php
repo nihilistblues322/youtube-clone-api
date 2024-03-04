@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Enums\Period;
 use App\Models\Video;
 use Illuminate\Database\Seeder;
 
@@ -12,6 +13,9 @@ class VideoSeeder extends Seeder
      */
     public function run(): void
     {
-        Video::factory()->count(100)->create();
+        collect(Period::cases())
+            ->each(fn(Period $period) => Video::factory(10)->last($period)->create());
+
+
     }
 }
