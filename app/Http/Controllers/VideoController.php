@@ -18,6 +18,11 @@ class VideoController extends Controller
             ->orderBy(request('sort', 'created_at'), request('order', 'asc'))
             ->get();
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 0ba6005df13516ef5d561bc4492f5053826ef194
     }
 
     public function show(Video $video)
