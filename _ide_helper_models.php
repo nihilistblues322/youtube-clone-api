@@ -43,6 +43,8 @@ namespace App\Models{
  * @property int $user_id
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Playlist> $playlists
+ * @property-read int|null $playlists_count
  * @property-read \App\Models\User $user
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Video> $videos
  * @property-read int|null $videos_count
@@ -58,6 +60,32 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Channel whereUserId($value)
  */
 	class Channel extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @property int $id
+ * @property string $name
+ * @property int $channel_id
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read \App\Models\Channel $channel
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Video> $videos
+ * @property-read int|null $videos_count
+ * @method static \Database\Factories\PlaylistFactory factory($count = null, $state = [])
+ * @method static \Illuminate\Database\Eloquent\Builder|Playlist newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Playlist newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Playlist query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Playlist search(?string $name)
+ * @method static \Illuminate\Database\Eloquent\Builder|Playlist whereChannelId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Playlist whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Playlist whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Playlist whereName($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Playlist whereUpdatedAt($value)
+ */
+	class Playlist extends \Eloquent {}
 }
 
 namespace App\Models{
@@ -107,6 +135,8 @@ namespace App\Models{
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Category> $categories
  * @property-read int|null $categories_count
  * @property-read \App\Models\Channel $channel
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Playlist> $playlists
+ * @property-read int|null $playlists_count
  * @method static \Database\Factories\VideoFactory factory($count = null, $state = [])
  * @method static \Illuminate\Database\Eloquent\Builder|Video fromPeriod(?\App\Enums\Period $period)
  * @method static \Illuminate\Database\Eloquent\Builder|Video newModelQuery()

@@ -22,4 +22,8 @@ class VideoController extends Controller
     {
         return $video->load(request('with', []));
     }
+    public function playlists()
+    {
+        return $this->hasMany(Video::class);
+    }
 }

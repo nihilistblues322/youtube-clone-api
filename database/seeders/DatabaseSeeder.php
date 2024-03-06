@@ -6,6 +6,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 
+
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -17,9 +18,11 @@ class DatabaseSeeder extends Seeder
         $this->call([
             UserSeeder::class,
             VideoSeeder::class,
+            PlaylistSeeder::class,
             ChannelSeeder::class,
             CategorySeeder::class,
             CategoryVideoSeeder::class,
+            PlaylistVideoSeeder::class,
         ]);
 
     }

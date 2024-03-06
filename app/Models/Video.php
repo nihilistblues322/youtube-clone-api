@@ -3,8 +3,10 @@
 namespace App\Models;
 
 use App\Enums\Period;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\Channel;
+use App\Models\Playlist;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Video extends Model
 {
@@ -13,6 +15,10 @@ class Video extends Model
     public function channel()
     {
         return $this->belongsTo(Channel::class);
+    }
+    public function playlists()
+    {
+        return $this->belongsToMany(Playlist::class);
     }
 
     public function categories()

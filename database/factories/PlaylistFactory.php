@@ -2,13 +2,13 @@
 
 namespace Database\Factories;
 
-use App\Models\User;
+use App\Models\Channel;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Channel>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Playlist>
  */
-class ChannelFactory extends Factory
+class PlaylistFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -19,7 +19,7 @@ class ChannelFactory extends Factory
     {
         return [
             'name' => ucfirst(fake()->words(mt_rand(1, 2), true)),
-            'user_id' => User::inRandomOrder()->first(),
+            'channel_id' => Channel::inRandomOrder()->first(),
         ];
     }
 }

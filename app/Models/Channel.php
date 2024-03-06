@@ -2,13 +2,20 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use App\Models\User;
+use App\Models\Video;
+use App\Models\Playlist;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Channel extends Model
 {
     use HasFactory;
 
+    public function playlists()
+    {
+        return $this->hasMany(Playlist::class);
+    }
     public function videos()
     {
         return $this->hasMany(Video::class);
