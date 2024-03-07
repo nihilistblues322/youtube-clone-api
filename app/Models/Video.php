@@ -3,10 +3,8 @@
 namespace App\Models;
 
 use App\Enums\Period;
-use App\Models\Channel;
-use App\Models\Playlist;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Model;
 
 class Video extends Model
 {
@@ -16,6 +14,7 @@ class Video extends Model
     {
         return $this->belongsTo(Channel::class);
     }
+
     public function playlists()
     {
         return $this->belongsToMany(Playlist::class);
@@ -38,5 +37,12 @@ class Video extends Model
                 ->orWhere('description', 'like', "%$text%");
         });
 
+    }
+
+    public function scopeWithRelationships($query, array $with)
+    {
+        $rel = ['channel', 'playlists', 'categories'];
+
+        return $query->with(array_intersect($with, $rel));
     }
 }

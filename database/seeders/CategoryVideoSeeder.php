@@ -2,11 +2,10 @@
 
 namespace Database\Seeders;
 
-use App\Models\Video;
 use App\Models\Category;
+use App\Models\Video;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Collection;
-use Illuminate\Support\Facades\DB;
 
 class CategoryVideoSeeder extends Seeder
 {
@@ -15,28 +14,17 @@ class CategoryVideoSeeder extends Seeder
      */
     public function run(): void
     {
-        $categoryIds = Category::pluck('id');
-        $videoIds = Video::pluck('id');
+        $videos = Video::get();
 
-        $categoryVideos = $categoryIds->flatMap(
-            fn (int $id) => $this->categoryVideos($id, $this->randomVideoIds($videoIds))
+        Category::get()->flatMap(
+            fn (Category $category) => $category->videos()->saveMany($this->randomVideos($videos))
         );
 
-        DB::table('category_video')->insert($categoryVideos->all());
-
     }
 
-    private function categoryVideos(int $categoryId, Collection $videoIds): Collection
+    private function randomVideos(Collection $videos): Collection
     {
-        return $videoIds->map(fn (int $id) => [
-            'category_id' => $categoryId,
-            'video_id' => $id,
-        ]);
+        return $videos->random(mt_rand(1, $videos->count()));
 
-    }
-
-    private function randomVideoIds(Collection $ids): Collection
-    {
-        return $ids->random(mt_rand(1, count($ids)));
     }
 }

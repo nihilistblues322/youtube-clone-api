@@ -149,6 +149,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Video whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Video whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Video whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Video withRelationships(array $with)
  */
 	class Video extends \Eloquent {}
 }
