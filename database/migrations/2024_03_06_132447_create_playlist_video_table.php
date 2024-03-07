@@ -1,13 +1,13 @@
 <?php
 
 use App\Models\Video;
+use App\Models\Channel;
 use App\Models\Playlist;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-return new class extends Migration
-{
+return new class extends Migration {
     /**
      * Run the migrations.
      */
@@ -17,6 +17,7 @@ return new class extends Migration
             $table->primary(['playlist_id', 'video_id']);
             $table->foreignIdFor(Playlist::class)->constrained();
             $table->foreignIdFor(Video::class)->constrained();
+            
         });
     }
 
