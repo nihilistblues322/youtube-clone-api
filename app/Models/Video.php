@@ -4,11 +4,12 @@ namespace App\Models;
 
 use App\Enums\Period;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
 
 class Video extends Model
 {
     use HasFactory;
+
+    protected static $relationships = ['channel', 'playlists', 'categories'];
 
     public function channel()
     {
@@ -37,12 +38,5 @@ class Video extends Model
                 ->orWhere('description', 'like', "%$text%");
         });
 
-    }
-
-    public function scopeWithRelationships($query, array $with)
-    {
-        $rel = ['channel', 'playlists', 'categories'];
-
-        return $query->with(array_intersect($with, $rel));
     }
 }

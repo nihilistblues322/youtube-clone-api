@@ -5,12 +5,14 @@ namespace App\Models;
 use App\Models\User;
 use App\Models\Video;
 use App\Models\Playlist;
-use Illuminate\Database\Eloquent\Model;
+
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Channel extends Model
 {
     use HasFactory;
+
+    protected static $relationships = ['user', 'playlists', 'videos'];
 
     public function playlists()
     {
@@ -32,4 +34,5 @@ class Channel extends Model
        return  $query->where('name', 'like', "%$name%");
 
     }
-}
+
+}   

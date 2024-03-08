@@ -30,6 +30,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Category whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Category whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Category whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Model withRelationships(array|string $with)
  */
 	class Category extends \Eloquent {}
 }
@@ -58,8 +59,21 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Channel whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Channel whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Channel whereUserId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Model withRelationships(array|string $with)
  */
 	class Channel extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @method static \Illuminate\Database\Eloquent\Builder|Model newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Model newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Model query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Model withRelationships(array|string $with)
+ */
+	class Model extends \Eloquent {}
 }
 
 namespace App\Models{
@@ -84,6 +98,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Playlist whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Playlist whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Playlist whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Model withRelationships(array|string $with)
  */
 	class Playlist extends \Eloquent {}
 }
@@ -118,6 +133,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|User wherePassword($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereRememberToken($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|User withRelationships(array|string $with)
  */
 	class User extends \Eloquent {}
 }
@@ -149,7 +165,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Video whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Video whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Video whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Video withRelationships(array $with)
+ * @method static \Illuminate\Database\Eloquent\Builder|Model withRelationships(array|string $with)
  */
 	class Video extends \Eloquent {}
 }
