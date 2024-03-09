@@ -9,7 +9,7 @@ class UserController extends Controller
     public function index()
     {
 
-        return User::withRelationships(request('with', []))
+        return User::withRelationships(request('with'))
 
             ->search(request('query'))
             ->orderBy(request('sort', 'created_at'), request('order', 'asc'))
@@ -19,6 +19,6 @@ class UserController extends Controller
 
     public function show(User $user)
     {
-        return $user->load(request('with', []));;
+        return $user->loadRelationships(request('with'));
     }
 }
