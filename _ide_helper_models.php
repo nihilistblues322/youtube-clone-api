@@ -30,7 +30,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Category whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Category whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Category whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Model withRelationships(array|string $with)
+ * @method static \Illuminate\Database\Eloquent\Builder|Model withRelationships($relationships)
  */
 	class Category extends \Eloquent {}
 }
@@ -59,9 +59,38 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Channel whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Channel whereUpdatedAt($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Channel whereUserId($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Model withRelationships(array|string $with)
+ * @method static \Illuminate\Database\Eloquent\Builder|Model withRelationships($relationships)
  */
 	class Channel extends \Eloquent {}
+}
+
+namespace App\Models{
+/**
+ * 
+ *
+ * @property int $id
+ * @property string $text
+ * @property int|null $parent_id
+ * @property int $user_id
+ * @property int $video_id
+ * @property \Illuminate\Support\Carbon|null $created_at
+ * @property \Illuminate\Support\Carbon|null $updated_at
+ * @property-read Comment|null $parent
+ * @property-read \App\Models\User $user
+ * @property-read \App\Models\Video $video
+ * @method static \Database\Factories\CommentFactory factory($count = null, $state = [])
+ * @method static \Illuminate\Database\Eloquent\Builder|Comment newModelQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Comment newQuery()
+ * @method static \Illuminate\Database\Eloquent\Builder|Comment query()
+ * @method static \Illuminate\Database\Eloquent\Builder|Comment whereCreatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Comment whereId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Comment whereParentId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Comment whereText($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Comment whereUpdatedAt($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Comment whereUserId($value)
+ * @method static \Illuminate\Database\Eloquent\Builder|Comment whereVideoId($value)
+ */
+	class Comment extends \Eloquent {}
 }
 
 namespace App\Models{
@@ -71,7 +100,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Model newModelQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Model newQuery()
  * @method static \Illuminate\Database\Eloquent\Builder|Model query()
- * @method static \Illuminate\Database\Eloquent\Builder|Model withRelationships(array|string $with)
+ * @method static \Illuminate\Database\Eloquent\Builder|Model withRelationships($relationships)
  */
 	class Model extends \Eloquent {}
 }
@@ -98,7 +127,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Playlist whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Playlist whereName($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Playlist whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Model withRelationships(array|string $with)
+ * @method static \Illuminate\Database\Eloquent\Builder|Model withRelationships($relationships)
  */
 	class Playlist extends \Eloquent {}
 }
@@ -133,7 +162,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|User wherePassword($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereRememberToken($value)
  * @method static \Illuminate\Database\Eloquent\Builder|User whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|User withRelationships(array|string $with)
+ * @method static \Illuminate\Database\Eloquent\Builder|User withRelationships($relationships)
  */
 	class User extends \Eloquent {}
 }
@@ -165,7 +194,7 @@ namespace App\Models{
  * @method static \Illuminate\Database\Eloquent\Builder|Video whereId($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Video whereTitle($value)
  * @method static \Illuminate\Database\Eloquent\Builder|Video whereUpdatedAt($value)
- * @method static \Illuminate\Database\Eloquent\Builder|Model withRelationships(array|string $with)
+ * @method static \Illuminate\Database\Eloquent\Builder|Model withRelationships($relationships)
  */
 	class Video extends \Eloquent {}
 }
