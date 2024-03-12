@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Enums\Period;
+use App\Models\Comment;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Video extends Model
@@ -24,6 +25,10 @@ class Video extends Model
     public function categories()
     {
         return $this->belongsToMany(Category::class);
+    }
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
     }
 
     public function scopeFromPeriod($query, ?Period $period)

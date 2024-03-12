@@ -76,6 +76,8 @@ namespace App\Models{
  * @property \Illuminate\Support\Carbon|null $created_at
  * @property \Illuminate\Support\Carbon|null $updated_at
  * @property-read Comment|null $parent
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, Comment> $replies
+ * @property-read int|null $replies_count
  * @property-read \App\Models\User $user
  * @property-read \App\Models\Video $video
  * @method static \Database\Factories\CommentFactory factory($count = null, $state = [])
@@ -180,6 +182,8 @@ namespace App\Models{
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Category> $categories
  * @property-read int|null $categories_count
  * @property-read \App\Models\Channel $channel
+ * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Comment> $comments
+ * @property-read int|null $comments_count
  * @property-read \Illuminate\Database\Eloquent\Collection<int, \App\Models\Playlist> $playlists
  * @property-read int|null $playlists_count
  * @method static \Database\Factories\VideoFactory factory($count = null, $state = [])
