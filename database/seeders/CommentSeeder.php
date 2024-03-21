@@ -2,50 +2,34 @@
 
 namespace Database\Seeders;
 
-use App\Models\Video;
 use App\Models\Comment;
+use App\Models\Video;
 use Illuminate\Database\Seeder;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 
 class CommentSeeder extends Seeder
 {
     /**
      * Run the database seeds.
+     *
+     * @return void
      */
-    public function run(): void
+    public function run()
     {
-
-        Video::take(3)->get()
-            ->map(
-                fn(Video $video) =>
-                static::seedCommentsFor($video)
-
-            )->flatten()->each(
-                fn(Comment $comment) =>
-                static::associateParentCommentWith($comment)
-            );
-    }
-    private static function seedCommentsFor(Video $video)
-    {
-        $comments = Comment::factory(10)->create();
-
-        $video->comments()->saveMany($comments);
-
-        return $comments;
-    }
-    private static function associateParentCommentWith(Comment $comment)
-    {
-        if ($comment->replies->isNotEmpty())
-            return;
-        $comment->parent()->associate(static::findRandomCommentThatCanBeParentOf($comment))->save();
+        Video::take(1)
+            ->get()
+            ->flatMap(fn(Video $video) => $this->forVideo($video))
+            ->flatMap(fn(Comment $comment) => $this->repliesOf($comment))
+            ->flatMap(fn(Comment $comment) => $this->repliesOf($comment))
+            ->flatMap(fn(Comment $comment) => $this->repliesOf($comment));
     }
 
-    private static function findRandomCommentThatCanBeParentOf(Comment $comment)
+    private function forVideo(Video $video)
     {
-        return $comment->video
-            ->comments()->doesntHave('parent')
-            ->where('id', '<>', $comment->id)
-            ->inRandomOrder()
-            ->first();
+        return Comment::factory(1)->for($video)->create();
+    }
+
+    private function repliesOf(Comment $comment)
+    {
+        return Comment::factory(1)->for($comment, 'parent')->create();
     }
 }
