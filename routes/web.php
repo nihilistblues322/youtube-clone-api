@@ -23,7 +23,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::post('/register', [RegisteredUserController::class, 'store']);//->middleware('guest');
+Route::post('/register', [RegisteredUserController::class, 'store'])->middleware('guest');
 // Route::delete('/delete-account', [RegisteredUserController::class, 'destroy'])->middleware('auth');
 
 // Route::post('/login', [AuthenticatedSessionController::class, 'store'])->middleware('guest');
