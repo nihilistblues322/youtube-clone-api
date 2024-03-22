@@ -7,6 +7,7 @@ use App\Http\Controllers\ChannelController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\PlaylistController;
+use App\Http\Controllers\PersonalAccessTokenController;
 
 Route::get('/playlists', [PlaylistController::class, 'index']);
 Route::get('/playlists/{playlist}', [PlaylistController::class, 'show']);
@@ -26,8 +27,11 @@ Route::get('/users/{user}', [UserController::class, 'show']);
 
 Route::get('/comments', [CommentController::class, 'index']);
 Route::get('/comments/{comment}', [CommentController::class, 'show']);
-Route::post('/comments', [CommentController::class, 'store']);
+Route::post('/comments', [CommentController::class, 'store'])->middleware('auth:sanctum');
 Route::put('/comments/{comment}', [CommentController::class, 'update']);
 Route::delete('/comments/{comment}', [CommentController::class, 'destroy']);
+
+
+Route::post('/personal-access-token', [PersonalAccessTokenController::class, 'store']);
 
 
