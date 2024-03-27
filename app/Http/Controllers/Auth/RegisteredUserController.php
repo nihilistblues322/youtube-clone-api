@@ -2,14 +2,12 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
-use Symfony\Component\HttpFoundation\Response;
-use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Auth\Events\Registered;
 use Illuminate\Validation\Rules\Password;
-
+use Symfony\Component\HttpFoundation\Response;
 
 class RegisteredUserController extends Controller
 {
@@ -28,22 +26,21 @@ class RegisteredUserController extends Controller
         Auth::login($user);
 
         return response($user, Response::HTTP_CREATED);
-           
-        
+
     }
 
-    // public function destroy(Request $request)
-    // {
-    //     $user = $request->user();
+    public function destroy(Request $request)
+    {
+        $user = $request->user();
 
-    //     Auth::logout();
+        Auth::logout();
 
-    //     $request->session()->invalidate();
+        $request->session()->invalidate();
 
-    //     $request->session()->regenerateToken();
+        $request->session()->regenerateToken();
 
-    //     $user->delete();
+        $user->delete();
 
-    //     return response()->noContent();
-    // }
+        return response()->noContent();
+    }
 }
